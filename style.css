@@ -1,0 +1,91 @@
+le · CSS
+:root {
+  --bg: #040406;
+  --ink: #f6ebe4;
+}
+ 
+* { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+html, body {
+  height: 100%;
+  background: var(--bg);
+  overflow: hidden;
+  color: var(--ink);
+}
+ 
+#scene {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: pointer;
+}
+ 
+/* Matn ostidagi yumshoq qorong'i qatlam (gullar biroz xira bo'ladi) */
+.veil {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 42% 34% at 50% 47%,
+              rgba(4, 3, 6, .85) 0%, rgba(4, 3, 6, .6) 55%, rgba(4, 3, 6, 0) 100%);
+  opacity: 0;
+  transition: opacity 2.2s ease;
+}
+.veil.show { opacity: 1; }
+ 
+.card {
+  position: fixed;
+  left: 50%;
+  top: 47%;
+  transform: translate(-50%, -50%);
+  width: min(92vw, 640px);
+  text-align: center;
+  pointer-events: none;
+}
+ 
+.eyebrow {
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(9px, 1.2vw, 12px);
+  letter-spacing: .38em;
+  text-transform: uppercase;
+  color: #fffaf5;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 1.6s ease, transform 1.6s ease;
+  text-shadow: 0 0 24px rgba(255, 255, 255, 0.6), 0 2px 18px rgba(0, 0, 0, 0.95);
+}
+ 
+.title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(42px, 6.8vw, 78px);
+  line-height: 1.1;
+  margin: .18em 0 .3em;
+  color: #fffaf5;
+  text-shadow: 0 0 32px rgba(255, 200, 170, 0.7), 0 4px 22px rgba(0, 0, 0, 0.9), 0 0 64px rgba(255, 255, 255, 0.15);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1.8s ease .35s, transform 1.8s ease .35s;
+}
+ 
+.poem .line {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(16px, 2.2vw, 24px);
+  line-height: 1.7;
+  color: #fff9f6;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 1), 0 0 14px rgba(255, 255, 255, 0.18);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1.6s ease, transform 1.6s ease;
+}
+ 
+.card.show .eyebrow,
+.card.show .title,
+.card.show .poem .line {
+  opacity: 1;
+  transform: none;
+}
